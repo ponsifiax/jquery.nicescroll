@@ -2407,7 +2407,7 @@
     };
 
     this.mousewheel = function (dom, fn, bubble) { // bind mousewheel
-      var el = ("jquery" in dom) ? dom[0] : dom;
+      var el = ("jquery" in dom) && !!dom[0] ? dom[0] : dom;
       if ("onwheel" in _doc.createElement("div")) { // Modern browsers support "wheel"
         self._bind(el, "wheel", fn, bubble || false);
       } else {
@@ -2529,7 +2529,7 @@
     };
 
     this.bind = function (dom, name, fn, bubble, active) {
-      var el = ("jquery" in dom) ? dom[0] : dom;
+      var el = ("jquery" in dom) && !!dom[0] ? dom[0] : dom;
       self._bind(el, name, fn, bubble || false, active || false);
     };
 
